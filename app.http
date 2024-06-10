@@ -1,0 +1,338 @@
+//metrics
+###
+GET http://localhost:8000/api/metrics
+
+//getting all states
+###
+GET http://localhost:8000/api/state/
+
+//getting one state
+###
+GET  http://localhost:8000/api/state/8
+
+// Deleting a state
+###
+DELETE  http://localhost:8000/api/state/4
+
+###
+//posting states/state
+POST  http://localhost:8000/api/state
+Content-Type: application/json
+
+{ 
+    "name": "Karen",
+    "code":"4565"
+}
+
+//Cities
+// getting cities 
+###
+GET http://localhost:8000/api/City
+
+
+//posting cities
+###
+POST  http://localhost:8000/api/City
+Content-Type: application/json
+
+{   
+    "name": "Nairobi",
+     "state_Id": "81"
+}
+
+
+// Deleting a state
+###
+DELETE  http://localhost:8000/api/City/8
+
+
+//restaurants
+
+//getting all restaurants
+###
+GET http://localhost:8000/api/restaurant
+
+//getting one restaurant
+###
+GET  http://localhost:8000/api/restaurant/2
+###
+
+DELETE  http://localhost:8000/api/restaurant
+
+###
+POST http://localhost:8000/api/restaurant
+Content-Type: application/json
+
+{ 
+ "name": "Gilean",
+  "street_address": "12345",
+  "zip_code": "9999",
+  "city_id": 25
+}
+//users app
+
+### 
+GET http://localhost:8000/api/users
+
+###
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "ccontact_Phone": "1234567890",
+  "phone_Verified": true,
+  "email": "john.doe@example.com",
+  "email_Verified": true,
+  "confirmation_Code": "ABC123",
+  "password": "securepassword"
+}
+###
+GET http://localhost:8000/api/users/2
+
+
+//status_catalog
+
+
+### 
+GET http://localhost:8000/api/status_catalog
+
+###
+POST http://localhost:8000/api/status_catalog
+Content-Type: application/json
+
+{
+  "name": "Gilean"
+}
+
+
+           // category
+###
+GET http://localhost:8000/api/category
+
+//getting one category
+###
+GET  http://localhost:8000/api/category/
+
+// Deleting a category
+###
+DELETE  http://localhost:8000/api/category/2
+
+###
+//posting states/category
+POST  http://localhost:8000/api/category
+Content-Type: application/json
+
+{    
+    "name": "Karen"
+    
+}
+
+//getting all menu_item
+###
+GET http://localhost:8000/api/menu_item/
+
+//getting one menuitem
+###
+GET  http://localhost:8000/api/menu_item/1
+
+// Deleting a menuitem
+###
+DELETE  http://localhost:8000/api/menu_item/13
+
+###
+//posting menuitem
+POST  http://localhost:8000/api/menu_item
+Content-Type: application/json
+
+{ 
+    "name": "muli",
+    "restaurantId" : 2,
+    "categoryId": 3,
+    "description": "good",
+    "ingredients": "wheat",
+    "price": 2344,
+    "active": true
+}
+
+//getting all driver
+###
+GET http://localhost:8000/api/driver
+
+//getting one driver
+###
+GET  http://localhost:8000/api/driver/2
+
+// Deleting a driver
+###
+DELETE  http://localhost:8000/api/driver/
+
+###
+//posting driver
+POST  http://localhost:8000/api/driver
+Content-Type: application/json
+
+{ 
+  "car_make": "Toyota",
+  "car_model": "Toyota",
+  "car_year": "2017",
+  "user_id": 3,
+  "online": false,
+  "delivering": true
+}
+
+
+
+//getting all address
+###
+GET http://localhost:8000/api/address
+
+//getting oneaddress
+###
+GET  http://localhost:8000/api/address/1
+
+// Deleting aaddress
+###
+DELETE  http://localhost:8000/api/address
+
+###
+//posting address
+POST  http://localhost:8000/api/address
+Content-Type: application/json
+
+{ 
+    
+  "street_Address1": "77AW",
+  "street_Address2": "27zs",
+  "zip_Code": "4565",
+  "delivery_Instructions": "delicate",
+  "user_Id": 5,
+  "city_Id": 31
+}
+
+//getting all drestaurant_owner
+###
+GET http://localhost:8000/api/restaurant_owner
+
+//getting one restaurant_owner
+###
+GET  http://localhost:8000/api/restaurant_owner/4
+
+// Deleting a restaurant_owner
+###
+DELETE  http://localhost:8000/api/restaurant_owner/5
+
+###
+//posting restaurant_owner
+POST  http://localhost:8000/api/restaurant_owner
+Content-Type: application/json
+
+{ 
+    "restaurantId": 6,
+    "ownerId": 3
+}
+
+###
+GET http://localhost:8000/api/orders
+
+//getting one orders
+###
+GET  http://localhost:8000/api/orders/4
+
+// Deleting aorders
+###
+DELETE  http://localhost:8000/api/orders/5
+
+###
+//posting orders
+POST  http://localhost:8000/api/orders
+Content-Type: application/json
+
+{ 
+    "restaurant_Id": 5,
+    "delivery_Address_Id": 4,
+    "user_Id": 3,
+    "driver_Id": 4,
+    "price": 5000,
+    "discount": 1000,
+    "final_Price": 4000,
+    "comment": "nice service" 
+}
+
+
+//COMMENT
+
+###
+GET http://localhost:8000/api/comment
+
+//getting one comment
+###
+GET  http://localhost:8000/api/comment/4
+
+// Deleting a comment
+###
+DELETE  http://localhost:8000/api/comment/5
+
+###
+//posting comment
+POST  http://localhost:8000/api/comment
+Content-Type: application/json
+
+{ 
+ "order_id": 6,
+    "user_id": 5,
+    "comment_text": "Thank you for your good service",
+    "is_complaint": true,
+    "is_price": true
+
+}
+
+//order_status
+
+###
+GET http://localhost:8000/api/order_status
+
+//getting one order_status
+###
+GET  http://localhost:8000/api/order_status/4
+
+// Deleting a order_status
+###
+DELETE  http://localhost:8000/api/order_status/5
+
+###
+//posting order_status
+POST  http://localhost:8000/api/order_status
+Content-Type: application/json
+
+{ 
+   "orderId": 6,
+    "statusCatalogId": 4
+}
+
+//order_menu_item
+
+###
+GET http://localhost:8000/api/order_menu_item
+
+//getting one order_status
+###
+GET  http://localhost:8000/api/order_menu_item/4
+
+// Deleting a order_status
+###
+DELETE  http://localhost:8000/api/order_menu_item/5
+
+###
+//posting order_status
+POST  http://localhost:8000/api/order_menu_item
+Content-Type: application/json
+
+{ 
+    "order_Id": 6,
+    "menuItem_Id": 5,
+    "quantity": 4555,
+    "itemPrice": "4564",
+    "price": "3049",
+    "comment": "for lunch"
+}
