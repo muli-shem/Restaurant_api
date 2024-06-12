@@ -1,5 +1,5 @@
 
-import { pgTable, serial, text, varchar,boolean,integer,timestamp,decimal } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, varchar,boolean,integer,timestamp,decimal, pgEnum } from "drizzle-orm/pg-core";
 import {relations}from"drizzle-orm";
 import {sql} from "drizzle-orm"
 import { One } from "drizzle-orm";
@@ -365,11 +365,26 @@ export const menuItemRelations = relations(menuItemTable, ({ one }) => ({  //den
   
   //  User and Comments relationship
   export const userCommentRelations = relations(usersTable, ({ many }) => ({  //denotes the relationship between user and comments
-    comment: many(commentTable), // one user can have many comments
+    comment: many(commentTable),
   }));
   
-  
- 
+  export const roleEnum =pgEnum("role", ["admin","user","both"])
+ // auth table
+  export const AuthOnusersTable = pgTable("auth_on_users",{
+    id:serial("id").primaryKey(),
+    userId:integer("user_id").notNull().references(()=> usersTable.id,{onDelete: "cascade"}),
+    password: varchar("password", {length: 100}),
+    username: varchar("username", {length:100}),
+    role: roleEnum("role").default("user"),
+  });
+  // create relationshiop of user
+
+  export const AuthOnuserRelations = relations(AuthOnusersTable, ({one})=>({
+     user: one (usersTable, {
+      fields:[AuthOnusersTable.userId],
+      references: [usersTable.id]
+     })
+  }));
 
 
 export type TIState = typeof StateTable.$inferInsert;
@@ -413,3 +428,6 @@ export type TSComment = typeof commentTable.$inferSelect;
 
 export type TIMenuItem = typeof menuItemTable.$inferInsert;
 export type TSMenuItem = typeof menuItemTable.$inferSelect;
+
+export type TIAuthUser = typeof AuthOnusersTable.$inferInsert;
+export type TSAuthUser = typeof AuthOnusersTable.$inferSelect;

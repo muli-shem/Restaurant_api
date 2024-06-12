@@ -23,7 +23,7 @@ import { categoryRouter } from './category/category.router'
 import { promise } from 'zod'
 import { register } from 'module'
 import { restaurantRouter } from './restaurant/restaurant.router'
-
+import { authRouter} from './auth/auth.router'
 
 
 
@@ -78,6 +78,8 @@ app.route('/', ordersRouter)
 app.route('/', order_menu_itemRouter)
 app.route('/', commentsRouter)
 app.route('/', orderStatusRouter)
+app.route('auth/', authRouter)
+
 
 const port = 8000
 console.log(`Server is running on port ${port}`)

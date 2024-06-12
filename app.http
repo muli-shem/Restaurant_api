@@ -4,8 +4,8 @@ GET http://localhost:8000/api/metrics
 
 //getting all states
 ###
-GET http://localhost:8000/api/state/
-
+GET http://localhost:8000/api/state
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU3NjUyfQ.YXuRcJeg6sygH569sWAMZ4Ytjf-RoXldYw3_CzQA820
 //getting one state
 ###
 GET  http://localhost:8000/api/state/8
@@ -14,14 +14,14 @@ GET  http://localhost:8000/api/state/8
 ###
 DELETE  http://localhost:8000/api/state/4
 
-###
 //posting states/state
+###
 POST  http://localhost:8000/api/state
 Content-Type: application/json
 
 { 
     "name": "Karen",
-    "code":"4565"
+    "code": "4565"
 }
 
 //Cities
@@ -37,11 +37,11 @@ Content-Type: application/json
 
 {   
     "name": "Nairobi",
-     "state_Id": "81"
+     "state_Id": "1"
 }
 
 
-// Deleting a state
+// Deleting a city
 ###
 DELETE  http://localhost:8000/api/City/8
 
@@ -57,7 +57,7 @@ GET http://localhost:8000/api/restaurant
 GET  http://localhost:8000/api/restaurant/2
 ###
 
-DELETE  http://localhost:8000/api/restaurant
+DELETE  http://localhost:8000/api/restaurant/5
 
 ###
 POST http://localhost:8000/api/restaurant
@@ -67,13 +67,13 @@ Content-Type: application/json
  "name": "Gilean",
   "street_address": "12345",
   "zip_code": "9999",
-  "city_id": 25
+  "city_id": 2
 }
 //users app
 
 ### 
-GET http://localhost:8000/api/users
-
+GET http://localhost:8000/api/users/2
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU2Mzg0fQ.Yb9o2f6LJS13BQ2pmPt2ygeli2BO_dNKLS9JW2StRds
 ###
 POST http://localhost:8000/api/users
 Content-Type: application/json
@@ -88,8 +88,8 @@ Content-Type: application/json
   "password": "securepassword"
 }
 ###
-GET http://localhost:8000/api/users/2
-
+GET http://localhost:8000/api/users
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU2Mzg0fQ.Yb9o2f6LJS13BQ2pmPt2ygeli2BO_dNKLS9JW2StRds
 
 //status_catalog
 
@@ -104,8 +104,6 @@ Content-Type: application/json
 {
   "name": "Gilean"
 }
-
-
            // category
 ###
 GET http://localhost:8000/api/category
@@ -116,7 +114,7 @@ GET  http://localhost:8000/api/category/
 
 // Deleting a category
 ###
-DELETE  http://localhost:8000/api/category/2
+DELETE  http://localhost:8000/api/category/3
 
 ###
 //posting states/category
@@ -148,12 +146,14 @@ Content-Type: application/json
 { 
     "name": "muli",
     "restaurantId" : 2,
-    "categoryId": 3,
+    "categoryId": 4,
     "description": "good",
     "ingredients": "wheat",
     "price": 2344,
     "active": true
 }
+
+
 
 //getting all driver
 ###
@@ -206,8 +206,8 @@ Content-Type: application/json
   "street_Address2": "27zs",
   "zip_Code": "4565",
   "delivery_Instructions": "delicate",
-  "user_Id": 5,
-  "city_Id": 31
+  "user_Id": 3,
+  "city_Id": 1
 }
 
 //getting all drestaurant_owner
@@ -228,7 +228,7 @@ POST  http://localhost:8000/api/restaurant_owner
 Content-Type: application/json
 
 { 
-    "restaurantId": 6,
+    "restaurantId": 3,
     "ownerId": 3
 }
 
@@ -237,7 +237,8 @@ GET http://localhost:8000/api/orders
 
 //getting one orders
 ###
-GET  http://localhost:8000/api/orders/4
+GET  http://localhost:8000/api/orders/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW4iLCJyb2xlIjoidXNlciIsImV4cCI6MTcxODE5MzEwNH0.0fo1OyaSUewxkc6ve8BmD4IeXn1Lr3ZqZjKwBW2ydo8
 
 // Deleting aorders
 ###
@@ -249,8 +250,8 @@ POST  http://localhost:8000/api/orders
 Content-Type: application/json
 
 { 
-    "restaurant_Id": 5,
-    "delivery_Address_Id": 4,
+    "restaurant_Id": 4,
+    "delivery_Address_Id": 3,
     "user_Id": 3,
     "driver_Id": 4,
     "price": 5000,
@@ -279,7 +280,7 @@ POST  http://localhost:8000/api/comment
 Content-Type: application/json
 
 { 
- "order_id": 6,
+    "order_id": 7,
     "user_id": 5,
     "comment_text": "Thank you for your good service",
     "is_complaint": true,
@@ -306,15 +307,15 @@ POST  http://localhost:8000/api/order_status
 Content-Type: application/json
 
 { 
-   "orderId": 6,
-    "statusCatalogId": 4
+    "orderId": 7,
+    "statusCatalogId": 2
 }
 
 //order_menu_item
 
 ###
 GET http://localhost:8000/api/order_menu_item
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU3NjUyfQ.YXuRcJeg6sygH569sWAMZ4Ytjf-RoXldYw3_CzQA820
 //getting one order_status
 ###
 GET  http://localhost:8000/api/order_menu_item/4
@@ -329,10 +330,39 @@ POST  http://localhost:8000/api/order_menu_item
 Content-Type: application/json
 
 { 
-    "order_Id": 6,
-    "menuItem_Id": 5,
+    "order_Id": 8,
+    "menuItem_Id": 8,
     "quantity": 4555,
     "itemPrice": "4564",
     "price": "3049",
     "comment": "for lunch"
 }
+
+
+
+
+// Authentication
+###
+//posting auth_on_users
+POST  http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "userId": 2,
+    "username": "Mannu", 
+    "password": "doean123",
+    "role": "user"
+}
+###
+//loging in auth_on_users
+POST  http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+   "username": "Mannu", 
+   "password": "doean123"
+}
+
+###
+GET  http://localhost:8000/api/users/3
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW5udSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MTk3MDU4fQ.bF5zBRer3xbIzMAxaAu5RgYqRYzaTOlb1653L9W5u0o
