@@ -9,6 +9,7 @@ import { HTTPException } from 'hono/http-exception'
 import {prometheus} from '@hono/prometheus'
 import {menuRouter} from './menu_item/menu_item.router'
 import { driverRouter } from './driver/driver.router'
+import { driverorderRouter } from './relations/driverRelatioships/driverRelatioships.router'
 import { commentsRouter } from './comment/comment.router'
 import { restaurantOwnerRouter } from './restaurant_owner/restaurant_owner.router'
 import { stateRouter } from './state/state.router'
@@ -20,8 +21,6 @@ import { order_menu_itemRouter } from './order_menu_item/order_menu_item.router'
 import { orderStatusRouter } from './order_status/order_status.router'
 import { status_catalogRouter } from './status_catalog/status_catalog.router'
 import { categoryRouter } from './category/category.router'
-import { promise } from 'zod'
-import { register } from 'module'
 import { restaurantRouter } from './restaurant/restaurant.router'
 import { authRouter} from './auth/auth.router'
 
@@ -78,6 +77,7 @@ app.route('/', ordersRouter)
 app.route('/', order_menu_itemRouter)
 app.route('/', commentsRouter)
 app.route('/', orderStatusRouter)
+app.route('/', driverorderRouter)
 app.route('auth/', authRouter)
 
 

@@ -181,7 +181,8 @@ Content-Type: application/json
   "delivering": true
 }
 
-
+###
+GET http://localhost:8000/api/driverordersRelationships
 
 //getting all address
 ###

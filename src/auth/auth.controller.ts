@@ -1,5 +1,5 @@
 import { Context} from "hono";
-import bcrypt from "bcrypt";
+import bycrpt from "bcrypt";
 import {sign} from "hono/jwt";
 import {createAuthUserService, userLoginService} from "./auth.service"
 import { error } from "console";
@@ -11,7 +11,7 @@ export const registerUser = async (c: Context) => {
     try {
         const user = await c.req.json();
         const pass = user.password;
-        const hashedPassword = await bcrypt.hash(pass, 10);
+        const hashedPassword = await bycrpt.hash(pass, 10);
         user.password = hashedPassword;
         const createdUser = await createAuthUserService(user);
         if (!createdUser) return c.text("User not created", 404);
@@ -31,7 +31,7 @@ export const loginUser = async (c: Context) => {
          if(userExist === null){
             return c.json({error: "User not found"}, 400);
          }
-         const userMatch = await bcrypt.compare(user.password as string, userExist?.password as string)
+         const userMatch = await bycrpt.compare(user.password as string, userExist?.password as string)
          if(!userMatch){
             return c.json({error: "Invalid credentials"}, 400);// unauthorized
          } else {
