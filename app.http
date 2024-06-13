@@ -1,6 +1,6 @@
 //metrics
 ###
-GET http://localhost:8000/api/metrics
+GET http://localhost:8000/
 
 //getting all states
 ###
@@ -8,7 +8,7 @@ GET http://localhost:8000/api/state
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU3NjUyfQ.YXuRcJeg6sygH569sWAMZ4Ytjf-RoXldYw3_CzQA820
 //getting one state
 ###
-GET  http://localhost:8000/api/state/8
+GET  http://localhost:8000/api/state/1
 
 // Deleting a state
 ###
