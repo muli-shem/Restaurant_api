@@ -48,7 +48,11 @@ app.use(trimTrailingSlash())// will remove the Trailing Slash
 //third party mildware
 app.use('*',  registerMetrics)  
 app.get('/', (c) => {
-  return c.text('Hello Hono!')
+  return c.html(`<h1> The Server is running! </h1> <br> 
+    <h>Am Mutua Muli Shem</h2> <br>
+    <h> This is my Deployment</h>
+    `)
+  
 })
 
 

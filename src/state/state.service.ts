@@ -4,11 +4,22 @@ import { TIState, TSState, StateTable } from "../drizzle/schema";
 
 export const StateService= async (limit?: number): Promise<TSState[] | null> => {
     if (limit) {
-        return await db.query.StateTable.findMany({
-            limit: limit
-        });
+        return await db.query.StateTable.findMany({limit: limit}
+        );
     }
-    return await db.query.StateTable.findMany();
+    return await db.query.StateTable.findMany({
+        with:{
+            cities:{
+                columns:{
+                    name:true,
+                    state_Id:true,
+                }
+
+            }
+        }
+    }
+
+    );
 }
 export const getStateByIdService = async (id: number): Promise<TIState | undefined> => {
     return await db.query.StateTable.findFirst({

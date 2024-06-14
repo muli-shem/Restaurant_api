@@ -1,6 +1,6 @@
 
 import { Context } from "hono";
-import { getAddressesService, getAddressByIdService, createAddressService, updateAddressService, deleteAddressService } from "./address.service";
+import {getAddresCityDetaliedInform, getAddressesService, getAddressByIdService, createAddressService, updateAddressService, deleteAddressService } from "./address.service";
 
 // get all addresses
 export const getAddressesController = async (c: Context) => {
@@ -79,5 +79,17 @@ export const deleteAddressController = async (c: Context) => {
         return c.json({ message: res }, 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 500);
+    }
+};
+
+export const getAddresCityDetaliedInformController = async(c:Context)=>{
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid Id" , 400);
+    try{
+        const address = await getAddresCityDetaliedInform(id);
+        if(!address) return c.text ("Address not found",400);
+        return c.json(address, 200);
+    }catch (error: any){
+        return c.json({error:error?.message}, 500);
     }
 };

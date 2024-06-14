@@ -8,7 +8,7 @@ export const usersRouter = new Hono();
 
 // Get all users at api/users
 usersRouter
-.get("/users",adminRoleAuth, listUsers)
+.get("/users", adminRoleAuth, listUsers)
 .post("/users", zValidator('json',usersSchema,(results,c) =>{
     if(!results.success){
         return c.json(results.error,400)

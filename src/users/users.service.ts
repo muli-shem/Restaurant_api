@@ -8,7 +8,18 @@ export const usersService = async (limit? : number):Promise<TSUsers[] | null> =>
             limit: limit
         });
     }
-    return await db.query.usersTable.findMany();
+    return await db.query.usersTable.findMany({
+        with:{
+            addresses:{
+                columns:{
+                  street_Address1:true,
+                  street_Address2:true,
+                  delivery_Instructions:true 
+                }
+            }
+        }
+    }
+    );
 }
 export const getUsersByIdService = async (id: number): Promise<TIUsers | undefined> => {
     return await db.query.usersTable.findFirst({

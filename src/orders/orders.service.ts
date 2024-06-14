@@ -5,7 +5,24 @@ import { TIOrders, TSOrders, ordersTable } from "../drizzle/schema";
 
 // GET ALL ORDERS
 export const getOrdersService = async (): Promise<TSOrders[] | null> => {
-    const orders = await db.query.ordersTable.findMany();
+    const orders = await db.query.ordersTable.findMany(
+        {
+            with:{
+                comments:{
+                    columns:{
+                        user_id:true,
+                        comment_text:true,
+                    },
+                    order_statuses:{
+                        columns:{
+                            oderId: true,
+                            status_Catalog_Id:true,
+                        }
+                    }
+                }
+            }
+        }
+    );
     return orders;
 }
 

@@ -1,11 +1,21 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 
-import { TIAddress, TSAddress,addressTable } from "../drizzle/schema";
+import { TIAddress, TSAddress,addressRelations,addressTable } from "../drizzle/schema";
 
 // GET ALL ADDRESSES
 export const getAddressesService = async (): Promise<TSAddress[] | null> => {
-    const addresses = await db.query.addressTable.findMany();
+    const addresses = await db.query.addressTable.findMany({
+        with:{
+            city:{
+                columns:{
+                    name:true   
+                }   
+
+            }
+        }
+
+    });
     return addresses;
 };
 
@@ -33,4 +43,28 @@ export const updateAddressService = async (id: number, address: TIAddress) => {
 export const deleteAddressService = async (id: number) => {
     await db.delete(addressTable).where(eq(addressTable.id, id));
     return "address deleted successfully";
+}
+
+export const getAddresCityDetaliedInform = async (id: number) => {
+    const address = await db.query.addressTable.findMany({
+        where: eq(addressTable.id, id),
+        columns:{
+            street_Address1 :true,
+            street_Address2:true,
+            zip_Code:true,
+            delivery_Instructions:true,
+        },
+        with:{
+            city:{
+                columns:{
+                    name:true,
+                }
+            },
+            user:{
+                
+
+            }
+        }
+    });
+    return address;
 }

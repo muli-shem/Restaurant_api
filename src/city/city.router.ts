@@ -4,6 +4,7 @@ import { getCity,  createCity, updateCity, deleteCity } from "./city.controller"
 export const cityRouter = new Hono();
 
 cityRouter.get("/City", getCity);
+cityRouter.get("/City/:id", getCity)
 
 //get all  state      api/city
 // cityRouter.get("/state", listCity);

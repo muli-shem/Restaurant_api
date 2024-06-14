@@ -5,7 +5,26 @@ import { TIRestaurant, TSRestaurant, restaurantTable } from "../drizzle/schema";
 
 // GET ALL RESTAURANTS
 export const getRestaurantsService = async (): Promise<TSRestaurant[] | null> => {
-    const restaurant = await db.query.restaurantTable.findMany();
+    const restaurant = await db.query.restaurantTable.findMany({
+        with:{
+            menu_items:{
+                columns:{
+                   restaurant:true,
+                   category_id:true,
+                   description:true,
+                   ingredients:true,
+                }
+            },
+            orders:{
+                columns:{
+                    restaurant_Id:true,
+                    estimated_Delivery_Tme:true,
+                    actual_Delivery_Time:true,
+                }
+
+            }
+        }
+    });
     return restaurant;
 };
 

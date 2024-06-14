@@ -12,7 +12,18 @@ export const getCategoriesService = async (): Promise<TSCategory[] | null> => {
 // ID
 export const getCategoryByIdService = async (id: number): Promise<TSCategory | undefined> => {
     const category = await db.query.categoryTable.findFirst({
-        where: eq(categoryTable.id, id)
+        where: eq(categoryTable.id, id),
+        with:{
+            menuItems:{
+                columns:{
+                    name:true,
+                    restaurantId:true,
+                    
+                }
+               
+            }
+
+        }
     });
     return category;
 }

@@ -5,7 +5,7 @@ GET http://localhost:8000/
 //getting all states
 ###
 GET http://localhost:8000/api/state
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU3NjUyfQ.YXuRcJeg6sygH569sWAMZ4Ytjf-RoXldYw3_CzQA820
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW5udSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjczNTk1fQ.nj2SFacvDF-_tXCHhm72I9-d7CV27HUVvD9z92JThPA
 //getting one state
 ###
 GET  http://localhost:8000/api/state/1
@@ -27,7 +27,7 @@ Content-Type: application/json
 //Cities
 // getting cities 
 ###
-GET http://localhost:8000/api/City
+GET http://localhost:8000/api/City/1
 
 
 //posting cities
@@ -73,23 +73,24 @@ Content-Type: application/json
 
 ### 
 GET http://localhost:8000/api/users/2
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU2Mzg0fQ.Yb9o2f6LJS13BQ2pmPt2ygeli2BO_dNKLS9JW2StRds
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1OTE3fQ.MOXgH6VTL8RNh6RQk-ak5l_BdP1FiCvFcP9Mjy0Uw5U
 ###
 POST http://localhost:8000/api/users
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1OTE3fQ.MOXgH6VTL8RNh6RQk-ak5l_BdP1FiCvFcP9Mjy0Uw5U
 
 {
   "name": "John Doe",
-  "ccontact_Phone": "1234567890",
+  "ccontact_Phone": 1234567890,
   "phone_Verified": true,
   "email": "john.doe@example.com",
   "email_Verified": true,
-  "confirmation_Code": "ABC123",
+  "confirmation_Code": 123,
   "password": "securepassword"
 }
 ###
 GET http://localhost:8000/api/users
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU2Mzg0fQ.Yb9o2f6LJS13BQ2pmPt2ygeli2BO_dNKLS9JW2StRds
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW5udSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjc1NjMyfQ.o_MRNg_MmodMuACxQExPCJEaosMt2yLbSApzY4rg_1g
 
 //status_catalog
 
@@ -158,19 +159,23 @@ Content-Type: application/json
 //getting all driver
 ###
 GET http://localhost:8000/api/driver
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1OTE3fQ.MOXgH6VTL8RNh6RQk-ak5l_BdP1FiCvFcP9Mjy0Uw5U
 
 //getting one driver
 ###
-GET  http://localhost:8000/api/driver/2
+GET  http://localhost:8000/api/driver/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1OTE3fQ.MOXgH6VTL8RNh6RQk-ak5l_BdP1FiCvFcP9Mjy0Uw5U
 
 // Deleting a driver
 ###
-DELETE  http://localhost:8000/api/driver/
+DELETE  http://localhost:8000/api/driver/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1OTE3fQ.MOXgH6VTL8RNh6RQk-ak5l_BdP1FiCvFcP9Mjy0Uw5U
 
 ###
 //posting driver
 POST  http://localhost:8000/api/driver
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1OTE3fQ.MOXgH6VTL8RNh6RQk-ak5l_BdP1FiCvFcP9Mjy0Uw5U
 
 { 
   "car_make": "Toyota",
@@ -181,8 +186,6 @@ Content-Type: application/json
   "delivering": true
 }
 
-###
-GET http://localhost:8000/api/driverordersRelationships
 
 //getting all address
 ###
@@ -349,10 +352,10 @@ POST  http://localhost:8000/api/auth/register
 Content-Type: application/json
 
 {
-    "userId": 2,
-    "username": "Mannu", 
-    "password": "doean123",
-    "role": "user"
+    "userId": 3,
+    "username": "Manu", 
+    "password": "doen123",
+    "role": "admin"
 }
 ###
 //loging in auth_on_users
@@ -360,10 +363,19 @@ POST  http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-   "username": "Mannu", 
-   "password": "doean123"
+   "username": "Manu", 
+   "password": "doen123"
 }
 
 ###
 GET  http://localhost:8000/api/users/3
 Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW5udSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MTk3MDU4fQ.bF5zBRer3xbIzMAxaAu5RgYqRYzaTOlb1653L9W5u0o
+
+# Relationships
+
+###
+GET http://localhost:8000/api/driverordersRelationships
+
+
+###
+GET http://localhost:8000/api/address
