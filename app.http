@@ -13,6 +13,14 @@ GET  http://localhost:8000/api/state/1
 // Deleting a state
 ###
 DELETE  http://localhost:8000/api/state/4
+###
+PUT http://localhost:8000/api/state/4
+Content-Type: application/json
+
+{ 
+    "name": "Kenya",
+    "code": "4565"
+}
 
 //posting states/state
 ###
@@ -89,8 +97,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6
   "password": "securepassword"
 }
 ###
-GET http://localhost:8000/api/users
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW5udSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjc1NjMyfQ.o_MRNg_MmodMuACxQExPCJEaosMt2yLbSApzY4rg_1g
+GET http://localhost:8000/api/users/3/orders
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4NTU5MTkyfQ.oaixk-nzG3qrHaUf7JeGEfpcMtJDlW8F0kWs_btRerU
 
 //status_catalog
 
@@ -111,7 +119,7 @@ GET http://localhost:8000/api/category
 
 //getting one category
 ###
-GET  http://localhost:8000/api/category/
+GET  http://localhost:8000/api/category
 
 // Deleting a category
 ###
@@ -322,7 +330,7 @@ GET http://localhost:8000/api/order_menu_item
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huYXRoYWFuIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTU3NjUyfQ.YXuRcJeg6sygH569sWAMZ4Ytjf-RoXldYw3_CzQA820
 //getting one order_status
 ###
-GET  http://localhost:8000/api/order_menu_item/4
+GET  http://localhost:8000/api/order_menu_item/11
 
 // Deleting a order_status
 ###
@@ -337,8 +345,8 @@ Content-Type: application/json
     "order_Id": 8,
     "menuItem_Id": 8,
     "quantity": 4555,
-    "itemPrice": "4564",
-    "price": "3049",
+    "itemPrice": 4564,
+    "price": 3049,
     "comment": "for lunch"
 }
 
@@ -379,3 +387,28 @@ GET http://localhost:8000/api/driverordersRelationships
 
 ###
 GET http://localhost:8000/api/address
+
+//user relationships
+
+###
+GET http://localhost:8000/api/users/3/orders
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4NTkyNDA5fQ.GTDCII9zmmUOPOKUygawuZbzcP4e6wXcdO29CJ20sRc
+
+
+
+###
+GET http://localhost:8000/api/users/3/address
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4NTkyNDA5fQ.GTDCII9zmmUOPOKUygawuZbzcP4e6wXcdO29CJ20sRc
+
+
+###
+GET http://localhost:8000/api/users/3/comment
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4NTU5MTkyfQ.oaixk-nzG3qrHaUf7JeGEfpcMtJDlW8F0kWs_btRerU
+
+
+###
+GET http://localhost:8000/api/us/3/comment
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYW51Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4NTU5MTkyfQ.oaixk-nzG3qrHaUf7JeGEfpcMtJDlW8F0kWs_btRerU
+
+
+

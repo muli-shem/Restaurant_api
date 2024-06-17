@@ -8,7 +8,7 @@ export const getDriverswithOrders = async(): Promise <TSDriver[] | null> =>{
         with:{
             orders:{
                 columns:{
-                    restaurant_Id: true,
+                    
                     estimated_Delivery_Time: true,
                     actual_Delivery_Time: true,
                 }

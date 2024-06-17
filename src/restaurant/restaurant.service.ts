@@ -7,10 +7,10 @@ import { TIRestaurant, TSRestaurant, restaurantTable } from "../drizzle/schema";
 export const getRestaurantsService = async (): Promise<TSRestaurant[] | null> => {
     const restaurant = await db.query.restaurantTable.findMany({
         with:{
-            menu_items:{
+            menuItem:{
                 columns:{
-                   restaurant:true,
-                   category_id:true,
+                   restaurantId:true,
+                   categoryId:true,
                    description:true,
                    ingredients:true,
                 }
@@ -18,7 +18,7 @@ export const getRestaurantsService = async (): Promise<TSRestaurant[] | null> =>
             orders:{
                 columns:{
                     restaurant_Id:true,
-                    estimated_Delivery_Tme:true,
+                    estimated_Delivery_Time:true,
                     actual_Delivery_Time:true,
                 }
 

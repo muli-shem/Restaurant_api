@@ -1,9 +1,65 @@
 {
-  "id": "cdb24e93-d330-4d56-b20e-768795cdae44",
+  "id": "09857488-ddd0-438f-b1d6-a98ad1fc55c3",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.auth_on_users": {
+      "name": "auth_on_users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'user'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "auth_on_users_user_id_users_id_fk": {
+          "name": "auth_on_users_user_id_users_id_fk",
+          "tableFrom": "auth_on_users",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.state": {
       "name": "state",
       "schema": "",
@@ -416,8 +472,8 @@
           "notNull": true,
           "default": "NOW()"
         },
-        "createdAt": {
-          "name": "createdAt",
+        "createdAy": {
+          "name": "createdAy",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
@@ -960,7 +1016,17 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "admin",
+        "user",
+        "both"
+      ]
+    }
+  },
   "schemas": {},
   "_meta": {
     "columns": {},

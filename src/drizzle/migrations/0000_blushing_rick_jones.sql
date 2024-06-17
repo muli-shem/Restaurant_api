@@ -1,3 +1,17 @@
+DO $$ BEGIN
+ CREATE TYPE "public"."role" AS ENUM('admin', 'user', 'both');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "auth_on_users" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"user_id" integer NOT NULL,
+	"password" varchar(100),
+	"username" varchar(100),
+	"role" "role" DEFAULT 'user'
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "state" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -60,7 +74,7 @@ CREATE TABLE IF NOT EXISTS "menu_item" (
 	"decimal" numeric NOT NULL,
 	"active" boolean DEFAULT true NOT NULL,
 	"createdAT" timestamp DEFAULT NOW() NOT NULL,
-	"createdAt" timestamp DEFAULT NOW() NOT NULL
+	"createdAy" timestamp DEFAULT NOW() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "order_menu_item" (
@@ -129,6 +143,12 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"created_At" timestamp DEFAULT NOW() NOT NULL,
 	"updated_At" timestamp DEFAULT NOW() NOT NULL
 );
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "auth_on_users" ADD CONSTRAINT "auth_on_users_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "address" ADD CONSTRAINT "address_user_Id_users_id_fk" FOREIGN KEY ("user_Id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;

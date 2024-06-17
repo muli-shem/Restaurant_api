@@ -1,8 +1,10 @@
 
 import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator';
-import { getOrdersController, getOrderByIdController, createOrderController, updateOrderController, deleteOrderController } from './orders.controller';
+import { getOrdersController, getOrderByIdController, createOrderController, updateOrderController, deleteOrderController, getDetailedOrdersInfo } from './orders.controller';
 import { orderSchema } from "../validator";
+import { bothRoleAuth } from '../middleware/bear.auth';
+import { getOrderDetailsService } from './orders.service';
 //import { adminRoleAuth,bothRoleAuth,userRoleAuth } from "../middleware/bear.auth";
 
 export const ordersRouter = new Hono()
@@ -25,3 +27,6 @@ ordersRouter
         }
     }), updateOrderController)
     .delete("orders/:id", deleteOrderController)
+
+ordersRouter.get("orders/:id/details" , bothRoleAuth, getDetailedOrdersInfo)
+     

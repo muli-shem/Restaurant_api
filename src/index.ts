@@ -26,7 +26,6 @@ import { authRouter} from './auth/auth.router'
 
 
 
-
 const app = new Hono();
 
 

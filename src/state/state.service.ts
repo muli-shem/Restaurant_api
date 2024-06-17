@@ -7,17 +7,7 @@ export const StateService= async (limit?: number): Promise<TSState[] | null> => 
         return await db.query.StateTable.findMany({limit: limit}
         );
     }
-    return await db.query.StateTable.findMany({
-        with:{
-            cities:{
-                columns:{
-                    name:true,
-                    state_Id:true,
-                }
-
-            }
-        }
-    }
+    return await db.query.StateTable.findMany(
 
     );
 }
@@ -40,4 +30,22 @@ export const updateStateService = async (id: number, state: TIState) => {
 export const deleteStateService = async (id: number) => {
     await db.delete(StateTable).where(eq(StateTable.id, id))
     return "state  deleted successfully";
+}
+
+export const getStateDetailsService = async(id:number) =>{
+    const state = await db.query.StateTable.findFirst({
+        where:eq(StateTable.id, id),
+        columns:{
+            name:true,
+            code:true,
+        },
+        with:{
+            city:{
+               columns:{
+                name:true,
+               } 
+            }
+        }
+    })
+
 }

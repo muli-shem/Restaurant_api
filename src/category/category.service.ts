@@ -14,7 +14,7 @@ export const getCategoryByIdService = async (id: number): Promise<TSCategory | u
     const category = await db.query.categoryTable.findFirst({
         where: eq(categoryTable.id, id),
         with:{
-            menuItems:{
+            menuItem:{
                 columns:{
                     name:true,
                     restaurantId:true,

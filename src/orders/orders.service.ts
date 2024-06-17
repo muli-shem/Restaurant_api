@@ -5,24 +5,7 @@ import { TIOrders, TSOrders, ordersTable } from "../drizzle/schema";
 
 // GET ALL ORDERS
 export const getOrdersService = async (): Promise<TSOrders[] | null> => {
-    const orders = await db.query.ordersTable.findMany(
-        {
-            with:{
-                comments:{
-                    columns:{
-                        user_id:true,
-                        comment_text:true,
-                    },
-                    order_statuses:{
-                        columns:{
-                            oderId: true,
-                            status_Catalog_Id:true,
-                        }
-                    }
-                }
-            }
-        }
-    );
+    const orders = await db.query.ordersTable.findMany();
     return orders;
 }
 
@@ -50,4 +33,35 @@ export const updateOrderService = async (id: number, order: TIOrders) => {
 export const deleteOrderService = async (id: number) => {
     await db.delete(ordersTable).where(eq(ordersTable.id, id));
     return "order deleted successfully";
+}
+// get orders details
+export const getOrderDetailsService = async(id:number)=>{
+    const orderDetails = await db.query.ordersTable.findFirst({
+        where: eq(ordersTable.id, id),
+        columns:{
+            price:true,
+            discount:true,
+            final_Price:true,
+            comment:true,
+        },
+        with:{
+            restaurant:{
+                columns:{
+                    name:true,
+                    street_address:true,
+                    zip_code:true,
+                },
+                with:{
+                    city:{
+                        columns:{
+                            name:true,
+                            
+                        }
+                    }
+                }
+                  
+            }
+        }              
+
+    })
 }
